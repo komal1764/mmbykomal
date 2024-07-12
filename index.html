@@ -1,0 +1,48 @@
+
+<html>
+<head>
+	
+	<title>MM by Komal</title>
+	<style>
+		*{font-size:50px;font-family:"Candara";}
+		body{background-color:lightblue;}
+	</style>
+</head>
+<body>
+<center>
+	<h1>Motivational Messages</h1>
+	<form onsubmit="show()">
+	<input type="submit" value="Get Msg"/>
+	<br/></br/>
+	<h2 id="msg"/>
+	<h3 id ="auth"/>
+	</form>
+	
+	<script>
+	function show()
+	{
+		event.preventDefault();
+		let msg=document.getElementById("msg");
+		let auth=document.getElementById("auth");
+	
+		let url="https://api.quotable.io/random";
+		fetch(url)
+		.then(res =>res.json())
+		.then(data=>{
+			let quote = data.content;
+			let author = data.author;
+			msg.innerHTML = quote;
+			auth.innerHTML = author;
+		})
+			.catch(err => alert("issue " +err));
+	
+	
+				
+	}
+	
+	</script>
+</center>
+</body>
+</html>
+
+	
